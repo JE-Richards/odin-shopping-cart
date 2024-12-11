@@ -1,0 +1,22 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Testing the Card component > matches the snapshot 1`] = `
+<div>
+  <div
+    class="sc-blHHSb iTUEeP"
+  >
+    <img
+      alt="T-shirt image."
+      src="placeholder"
+    />
+    <div>
+      <h1>
+        T-shirt
+      </h1>
+      <h2>
+        $1000
+      </h2>
+    </div>
+  </div>
+</div>
+`;
