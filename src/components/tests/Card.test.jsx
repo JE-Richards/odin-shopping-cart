@@ -1,16 +1,7 @@
 import Card from '../Card';
-import { ThemeProvider } from 'styled-components';
 import { vi, describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-
-const mockTheme = {
-  colors: {
-    surface: '#ffffff',
-    textPrimary: '#000000',
-    primary: '#00adb5',
-  },
-  shadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-};
+import { withThemeProvider } from './mockTheme';
 
 describe('Testing the Card component', () => {
   it('correctly renders', () => {
@@ -20,11 +11,7 @@ describe('Testing the Card component', () => {
       title: 'T-shirt',
     };
 
-    render(
-      <ThemeProvider theme={mockTheme}>
-        <Card obj={testData} />
-      </ThemeProvider>
-    );
+    render(withThemeProvider(<Card obj={testData} />));
 
     const title = screen.getByText(testData.title);
     const price = screen.getByText(`$${testData.price}`);
@@ -43,9 +30,7 @@ describe('Testing the Card component', () => {
       .mockImplementation(() => {});
 
     render(
-      <ThemeProvider theme={mockTheme}>
-        <Card obj={{ image: 123, price: 'abc', title: 456 }} />
-      </ThemeProvider>
+      withThemeProvider(<Card obj={{ image: 123, price: 'abc', title: 456 }} />)
     );
 
     expect(consoleErrorSpy).toHaveBeenCalled();
@@ -68,11 +53,7 @@ describe('Testing the Card component', () => {
       title: 'T-shirt',
     };
 
-    const { container } = render(
-      <ThemeProvider theme={mockTheme}>
-        <Card obj={testData} />
-      </ThemeProvider>
-    );
+    const { container } = render(withThemeProvider(<Card obj={testData} />));
 
     expect(container).toMatchSnapshot();
   });
