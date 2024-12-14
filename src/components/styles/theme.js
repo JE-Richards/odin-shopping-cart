@@ -7,6 +7,20 @@ export const lightTheme = {
     textSecondary: '#616161',
   },
 
+  button: {
+    primary: {
+      background: '#00ADB5',
+      backgroundHover: '#00868d',
+      text: '#FFFFFF',
+      border: '2px solid #00ADB5',
+      borderFocus: '2px solid #00868d',
+    },
+    secondary: {
+      background: '#FFFFFF',
+      text: '#00ADB5',
+      border: '2px solid #00ADB5',
+    },
+  },
   shadow: '10px 10px 15px rgba(0, 0, 0, 0.3)',
 };
 
@@ -18,4 +32,18 @@ export const darkTheme = {
     textPrimary: '#EEEEEE',
     textSecondary: '#393E46',
   },
+
+  button: {
+    primary: {
+      background: '#00ADB5',
+      text: '#222831',
+      border: '2px solid transparent',
+    },
+    secondary: {
+      background: '#222831',
+      text: '#00ADB5',
+      border: '2px solid #00ADB5',
+    },
+  },
+  shadow: '10px 10px 15px rgba(0, 0, 0, 0.3)',
 };
