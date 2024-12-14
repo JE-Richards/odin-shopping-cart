@@ -24,7 +24,7 @@ export const StyledCard = styled.div`
 
   & h1 {
     color: ${({ theme }) => theme.colors.textPrimary};
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 
   & h2 {

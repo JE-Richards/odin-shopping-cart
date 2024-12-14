@@ -6,7 +6,7 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   width: 100%;
   padding: 1.5em;
-
+  background-color: ${({ theme }) => theme.colors.surface};
   & h1 {
     font-size: 1.5em;
   }
