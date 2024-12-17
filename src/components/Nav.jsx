@@ -9,7 +9,7 @@ function Nav() {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="store">Store</Link>
+          <Link to="/store">Store</Link>
         </li>
       </ul>
     </StyledNav>

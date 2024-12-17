@@ -9,7 +9,7 @@ function Header() {
     <StyledHeader>
       <h1>Shopifake</h1>
       <Nav />
-      <Link to="cart">
+      <Link to="/cart">
         <IconContext.Provider value={{ color: '#00ADB5' }}>
           <AiOutlineShoppingCart data-testid="cart-icon" />
         </IconContext.Provider>
