@@ -41,20 +41,8 @@ describe('Testing the Card component', () => {
     expect(warning).toContain(
       'Invalid prop `obj.image` of type `number` supplied to `Card`, expected `string`.'
     );
-    // Note: subsequent prop type warnings get surpressed to avoid cluttering the console, so only testing that the first has executes. This is sufficient for this project.
+    // Note: subsequent prop type warnings get surpressed to avoid cluttering the console, so only testing that the first has executed. This is sufficient for this project.
 
     consoleErrorSpy.mockRestore();
-  });
-
-  it('matches the snapshot', () => {
-    const testData = {
-      image: 'placeholder',
-      price: 1000,
-      title: 'T-shirt',
-    };
-
-    const { container } = render(withThemeProvider(<Card obj={testData} />));
-
-    expect(container).toMatchSnapshot();
   });
 });

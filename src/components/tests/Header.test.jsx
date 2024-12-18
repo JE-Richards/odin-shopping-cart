@@ -7,15 +7,16 @@ import { MemoryRouter } from 'react-router-dom';
 describe('Testing Header component', () => {
   it('renders correctly', () => {
     render(
-      <MemoryRouter>
-        withThemeProvider(
-        <Header />)
-      </MemoryRouter>
+      withThemeProvider(
+        <MemoryRouter>
+          <Header />
+        </MemoryRouter>
+      )
     );
 
     const title = screen.getByText('Shopifake');
     const nav = screen.getByRole('navigation');
-    const cartLink = screen.getByRole('link', { name: '' }); // no accessible name associted with the icon used for rendering
+    const cartLink = screen.getByRole('link', { name: 'Go to cart' }); // aria-label
 
     expect(title).toBeInTheDocument();
     expect(nav).toBeInTheDocument();
@@ -25,10 +26,11 @@ describe('Testing Header component', () => {
 
   it('renders the cart icon', () => {
     render(
-      <MemoryRouter>
-        withThemeProvider(
-        <Header />)
-      </MemoryRouter>
+      withThemeProvider(
+        <MemoryRouter>
+          <Header />
+        </MemoryRouter>
+      )
     );
 
     const cartIcon = screen.getByTestId('cart-icon');

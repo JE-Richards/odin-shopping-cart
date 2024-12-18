@@ -30,8 +30,8 @@ function ProductQuantity({
       <button onClick={handleDecrement} disabled={quantity <= 1}>
         -
       </button>
-      <span>{quantity}</span>
-      <button onClick={handleIncrement} disabled={quantity >= 99}>
+      <span data-testid="quantity">{quantity}</span>
+      <button onClick={handleIncrement} disabled={quantity >= maxQuantity}>
         +
       </button>
     </QuantityContainer>
