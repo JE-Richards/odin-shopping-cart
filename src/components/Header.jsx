@@ -7,7 +7,9 @@ import Nav from './Nav';
 function Header() {
   return (
     <StyledHeader>
-      <h1>Shopifake</h1>
+      <Link to="/">
+        <h1>Shopifake</h1>
+      </Link>
       <Nav />
       <Link to="/cart" aria-label="Go to cart">
         <IconContext.Provider value={{ color: '#00ADB5' }}>

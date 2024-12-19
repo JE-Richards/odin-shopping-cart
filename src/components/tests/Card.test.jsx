@@ -2,16 +2,24 @@ import Card from '../Card';
 import { vi, describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { withThemeProvider } from './mockTheme';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('Testing the Card component', () => {
   it('correctly renders', () => {
     const testData = {
+      id: 1,
       image: 'placeholder',
       price: 1000,
       title: 'T-shirt',
     };
 
-    render(withThemeProvider(<Card obj={testData} />));
+    render(
+      withThemeProvider(
+        <MemoryRouter>
+          <Card obj={testData} />
+        </MemoryRouter>
+      )
+    );
 
     const title = screen.getByText(testData.title);
     const price = screen.getByText(`$${testData.price}`);
@@ -30,7 +38,11 @@ describe('Testing the Card component', () => {
       .mockImplementation(() => {});
 
     render(
-      withThemeProvider(<Card obj={{ image: 123, price: 'abc', title: 456 }} />)
+      withThemeProvider(
+        <MemoryRouter>
+          <Card obj={{ id: 'a', image: 123, price: 'abc', title: 456 }} />
+        </MemoryRouter>
+      )
     );
 
     expect(consoleErrorSpy).toHaveBeenCalled();
@@ -39,7 +51,7 @@ describe('Testing the Card component', () => {
     const calls = consoleErrorSpy.mock.calls.flat();
     const warning = calls.join(' ');
     expect(warning).toContain(
-      'Invalid prop `obj.image` of type `number` supplied to `Card`, expected `string`.'
+      'Invalid prop `obj.id` of type `string` supplied to `Card`, expected `number`.'
     );
     // Note: subsequent prop type warnings get surpressed to avoid cluttering the console, so only testing that the first has executed. This is sufficient for this project.
 
