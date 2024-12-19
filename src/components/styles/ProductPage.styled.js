@@ -47,6 +47,11 @@ export const StyledProductPage = styled.div`
 
   & > div:nth-of-type(2) {
     display: flex;
+    align-items: center;
     gap: 1em;
+
+    & p {
+      color: rgb(157, 0, 0);
+    }
   }
 `;

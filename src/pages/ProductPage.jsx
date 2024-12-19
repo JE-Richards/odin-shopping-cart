@@ -14,10 +14,18 @@ import { FaRegStar, FaRegStarHalfStroke, FaStar } from 'react-icons/fa6';
 import { IconContext } from 'react-icons';
 
 function ProductPage() {
-  const { products, cart, error, isLoading, isDarkMode, setIsDarkMode } =
-    useAppContext();
+  const {
+    products,
+    cart,
+    setCart,
+    error,
+    isLoading,
+    isDarkMode,
+    setIsDarkMode,
+  } = useAppContext();
   const { productId } = useParams();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [cartOverflow, setCartOverflow] = useState(false);
 
   function starRating(rating) {
     function roundHalf(num) {
@@ -48,6 +56,37 @@ function ProductPage() {
         </IconContext.Provider>
       </div>
     );
+  }
+
+  function addToCart() {
+    const isInCart = cart.some((item) => item.id === product.id);
+
+    if (isInCart) {
+      setCart((prevCart) =>
+        prevCart.map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: Math.min(item.quantity + selectedQuantity, 99),
+              }
+            : item
+        )
+      );
+
+      // Set product overflow flag
+      const prodInCart = cart.find((item) => item.id === product.id);
+      if (prodInCart.quantity + selectedQuantity >= 99) {
+        setCartOverflow(true);
+      } else {
+        setCartOverflow(false);
+      }
+    } else {
+      setCart((prevCart) => [
+        ...prevCart,
+        { id: product.id, quantity: selectedQuantity },
+      ]);
+      setCartOverflow(false);
+    }
   }
 
   const product = products.find((item) => item.id === parseInt(productId, 10));
@@ -81,7 +120,17 @@ function ProductPage() {
                     maxQuantity={99}
                     onChange={setSelectedQuantity}
                   />
-                  <StyledButton variant="primary">Add to cart</StyledButton>
+                  {!cartOverflow && (
+                    <StyledButton variant="primary" onClick={() => addToCart()}>
+                      Add to cart
+                    </StyledButton>
+                  )}
+                  {cartOverflow && (
+                    <p>
+                      Maximum quantity reached! You may only purchase 99 of a
+                      product in a single transaction.
+                    </p>
+                  )}
                 </div>
               </>
             )}
