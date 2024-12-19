@@ -6,4 +6,12 @@ export const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.primary};
   padding: 1em;
   color: ${({ theme }) => theme.colors.background};
+
+  a {
+    color: #ffffff;
+  }
+
+  a:hover {
+    color: #e0e0e0;
+  }
 `;

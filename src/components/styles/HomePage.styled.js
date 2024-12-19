@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledHero = styled.section`
   background-color: ${({ theme }) => theme.colors.surface};
   padding: 6em 3em;
+  width: 100%;
   & h1 {
     font-size: 3.5em;
     line-height: 1.1;
